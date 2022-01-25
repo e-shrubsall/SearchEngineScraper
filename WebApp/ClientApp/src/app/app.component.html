@@ -1,0 +1,20 @@
+<div class="col">
+  <div class="row">
+    <label class="col">Query Text: </label>
+    <input type="text" id="queryText" name="queryText" class="form-control form-text" [(ngModel)]="queryRequest.queryText">
+  </div>
+  <div class="row">
+    <label class="col">Target URL: </label>
+    <input type="text" id="targetUrl" name="targetUrl" class="form-control form-text" [(ngModel)]="queryRequest.targetUrl">
+  </div>
+  <div>
+    <label class="col">Engine: </label>
+    <select id="engine" class="form-control" [(ngModel)]="queryRequest.engine">
+      <option *ngFor="let e of supportedEngines" [ngValue]="e">{{getName(e)}}</option>
+    </select>
+  </div>
+  <button (click)="getResults()">
+    Get Ranking
+  </button>
+  <span *ngIf="ranking > 0">Ranking: {{ranking > 100 ? '101+' : ranking }}</span>
+</div>
